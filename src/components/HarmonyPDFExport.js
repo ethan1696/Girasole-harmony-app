@@ -6,7 +6,7 @@ export class HarmonyPDFExport {
   constructor(JsPdfClass = jsPDF) {
     this.doc = new JsPdfClass()
   }
-  
+
   async generateReport(data) {
     const {
       matches,
@@ -26,10 +26,10 @@ export class HarmonyPDFExport {
       instrumentCount: instruments.length,
       threshold
     });
-    
+
     // Matches table
     this.addMatchesTable(matches, selectedMatches);
-    
+
     return this.doc.output('blob');
   }
 
@@ -60,7 +60,7 @@ export class HarmonyPDFExport {
       match.question2.instrument_name,
       `${(match.score * 100).toFixed(1)}%`
     ]);
-    
+  
     this.doc.autoTable({
       startY: this.doc.lastAutoTable ? this.doc.lastAutoTable.finalY + 20 : 60,
       head: [['Question 1', 'Instrument 1', 'Question 2', 'Instrument 2', 'Score']],
