@@ -1,6 +1,8 @@
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import { applyPlugin } from 'jspdf-autotable'
 import { format } from 'date-fns';
+
+applyPlugin(jsPDF)
 
 export class HarmonyPDFExport {
   constructor() {
@@ -12,7 +14,7 @@ export class HarmonyPDFExport {
       matches,
       instruments,
       threshold,
-      selectedMatches = []
+      selectedMatches
     } = data;
 
     // Header
@@ -72,9 +74,9 @@ export class HarmonyPDFExport {
         cellPadding: 2,
       },
       columnStyles: {
-        0: { cellWidth: 60 }, // Question 1
+        0: { cellWidth: 50 }, // Question 1
         1: { cellWidth: 30 }, // Instrument 1
-        2: { cellWidth: 60 }, // Question 2
+        2: { cellWidth: 50 }, // Question 2
         3: { cellWidth: 30 }, // Instrument 2
         4: { cellWidth: 20 }, // Score
       },
